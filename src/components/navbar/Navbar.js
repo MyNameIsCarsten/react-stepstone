@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { ReactComponent as Logo } from '../../logo.svg';
-import { Link } from 'react-router-dom';
+import Search from '../search/Search';
 
 const Wrapper = styled.nav`
-    font-size: 1.5em;
+    font-size: 1em;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -24,10 +24,12 @@ const Wrapper = styled.nav`
     align-items: center;
     background-color: transparent;
     border: none;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #0C2577;
     text-decoration: none;
-    
+    @media (max-width: 1200px){
+      display: ${props => props.$mobile ? 'flex' : 'none'};
+    }
   `;
 
   const StyledSvg = styled.svg`
@@ -48,7 +50,7 @@ const Wrapper = styled.nav`
     align-items: center;
     background-color: transparent;
     border: none;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #0C2577;
     text-decoration: none;
     &:hover {
@@ -60,7 +62,7 @@ const Wrapper = styled.nav`
   const PopUp = styled.div`
     position: absolute;
     transform: ${props => `translate3d(${props.$length || '0px'}, ${props.$depth || '0px'}, 0px)`};
-    display: flex;
+    display: none; /* show (flex) or hide (none) pop ups */
     flex-direction: column;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 16px;
     background-color: rgb(255, 255, 255);
@@ -77,6 +79,16 @@ const Wrapper = styled.nav`
         cursor: pointer;
         background-color: rgb(244, 244, 237);
       }
+  `;
+
+  const Span = styled.span`
+    background-color: #0C2577;
+    color: #0C2577;
+    min-width: 1px;
+    @media (max-width: 1200px){
+      display: 'none';
+      min-width: 0px;
+    }
   `;
 
 
@@ -96,8 +108,9 @@ const Navbar = () => {
                     <StyledSvg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 20 20" aria-labelledby="RecruiterSiteIcon-1143"><title id="RecruiterSiteIcon-1143">Recruiter site icon</title><path fill="currentColor" d="M9.17 9.753a2.793 2.793 0 01-2.063-.865c-.57-.576-.854-1.26-.854-2.052 0-.805.285-1.493.854-2.062A2.81 2.81 0 019.17 3.92a2.81 2.81 0 012.062.854c.57.57.854 1.257.854 2.062 0 .792-.285 1.476-.854 2.052a2.792 2.792 0 01-2.062.865zm0-1.333a1.53 1.53 0 001.125-.459 1.53 1.53 0 00.458-1.125c0-.444-.153-.819-.458-1.125a1.531 1.531 0 00-1.125-.458c-.445 0-.82.153-1.125.458a1.53 1.53 0 00-.46 1.125c0 .445.154.82.46 1.125.305.306.68.459 1.125.459zm8.437 10.062l-2-2c-.277.18-.572.32-.885.417a3.242 3.242 0 01-.97.146c-.916 0-1.693-.32-2.332-.959-.64-.639-.96-1.416-.96-2.333 0-.917.32-1.694.96-2.333.639-.64 1.416-.959 2.333-.959.917 0 1.694.32 2.333.959.64.639.959 1.416.959 2.333 0 .333-.049.656-.146.969a3.544 3.544 0 01-.417.885l2 2a.611.611 0 01.188.448.545.545 0 01-.188.427.546.546 0 01-.427.188.612.612 0 01-.448-.188zm-3.854-2.771c.57 0 1.038-.184 1.406-.552.368-.368.552-.837.552-1.406 0-.57-.184-1.038-.552-1.406-.368-.368-.837-.552-1.406-.552-.57 0-1.038.184-1.406.552-.368.368-.552.837-.552 1.406 0 .57.184 1.038.552 1.406.368.368.837.552 1.406.552zm-4.458.375H4.274c-.375 0-.695-.132-.96-.395a1.284 1.284 0 01-.394-.938v-.5c0-.417.108-.799.323-1.146a2.18 2.18 0 01.906-.812c.653-.32 1.423-.601 2.312-.844.89-.243 1.883-.358 2.98-.344a3.374 3.374 0 00-.323.656c-.09.243-.164.476-.22.698-.916.028-1.718.143-2.405.344-.688.201-1.247.42-1.678.656a1.01 1.01 0 00-.416.334.78.78 0 00-.146.458v.5h4.542c.055.222.128.455.218.698.09.243.185.454.282.635z"></path></StyledSvg>
                     Für Arbeitgeber
                 </PopUpTrigger> 
+                
             </StyledLink>
-            <p>|</p>
+            <Span></Span>
             <StyledLink to="/for-employers">
                 <PopUpTrigger>
                     <StyledSvg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 20 20" aria-labelledby="BookFlipPageIcon-1169"><title id="BookFlipPageIcon-1169">Book flip page icon</title><path fill="currentColor" d="M5.458 13.271c.68 0 1.34.076 1.979.229a9.12 9.12 0 011.896.688V6.146a6.717 6.717 0 00-1.854-.813 7.695 7.695 0 00-2.021-.271c-.486 0-.948.035-1.385.105-.437.07-.878.18-1.323.333a.322.322 0 00-.125.104.224.224 0 00-.042.125v7.75c0 .083.028.142.084.177a.16.16 0 00.166.011 8.657 8.657 0 012.625-.396zm5.209.917a9.126 9.126 0 011.895-.688 8.403 8.403 0 011.959-.229c.5 0 .962.035 1.385.104.424.07.844.174 1.261.313a.16.16 0 00.166-.011c.056-.035.084-.094.084-.177V5.792a.221.221 0 00-.042-.125.319.319 0 00-.125-.105 9.533 9.533 0 00-1.344-.374 7.123 7.123 0 00-1.385-.126 7.74 7.74 0 00-2.011.271 6.391 6.391 0 00-1.843.813v8.042zM10 15.938a.846.846 0 01-.271-.042 1.07 1.07 0 01-.25-.125 8.991 8.991 0 00-1.927-.854 7.032 7.032 0 00-2.094-.313 5.93 5.93 0 00-1.52.198c-.5.132-.986.309-1.459.531-.278.14-.552.119-.823-.062a.854.854 0 01-.406-.75V5.396c0-.18.045-.344.135-.49a.812.812 0 01.386-.323 7.47 7.47 0 011.791-.645 8.692 8.692 0 014.25.114A8.525 8.525 0 0110 5a9.017 9.017 0 012.177-.948 8.522 8.522 0 014.24-.104 8.954 8.954 0 011.812.635c.167.07.295.178.386.323.09.146.135.31.135.49v9.125a.818.818 0 01-.417.75.89.89 0 01-.875.041 8.104 8.104 0 00-1.437-.52 5.984 5.984 0 00-1.5-.188c-.709 0-1.4.104-2.073.313a8.991 8.991 0 00-1.927.854 1.07 1.07 0 01-.25.125.846.846 0 01-.271.042z"></path></StyledSvg>
@@ -133,7 +146,7 @@ const Navbar = () => {
                     <PopUpSpan>Bewerbungen</PopUpSpan>
                 </PopUp>
             </StyledLink>
-            <StyledLink to="/for-employers">
+            <StyledLink to="/for-employers" $mobile='true'>
                 <UserInitial>C</UserInitial>
                 <PopUpTrigger>Carsten</PopUpTrigger>
                 <PopUp $depth="160px" $length="-100px">
@@ -145,8 +158,8 @@ const Navbar = () => {
             </StyledLink>
             
         </LinksWrapper>
-        
       </Wrapper>
+      <Search />
     </div>
   );
 };

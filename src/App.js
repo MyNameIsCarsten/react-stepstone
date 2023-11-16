@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import './App.css';
 import Navbar from './components/navbar/Navbar';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import RightContent from './components/rightcontent/RightContent';
+import LeftContent from './components/leftcontent/LeftContent';
 
 const HeaderWrapper = styled.header`
   background: url('./background.svg');
@@ -13,20 +15,43 @@ const HeaderWrapper = styled.header`
   /* Additional styles for the header if needed */
 `;
 
+const ContentWrapper = styled.div`
+  display: flex;
+  width: 1140px;
+  margin: auto;
+  padding: 1.5em;
+  gap: 2em;
+`;
+
+const LeftWrapper = styled.div`
+  flex: 6;
+`;
+
+const RightWrapper = styled.div`
+  flex: 18;
+`;
+
 function Home() {
   return (
     <>
       <HeaderWrapper>
         <Navbar />
       </HeaderWrapper>
-      <p>Hello World!</p>
+      <ContentWrapper>
+        <LeftWrapper>
+          <LeftContent/>
+        </LeftWrapper>
+        <RightWrapper>
+          <RightContent />
+        </RightWrapper>
+      </ContentWrapper>
     </>
   );
 }
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{minWidth: 420}}>
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
