@@ -39,7 +39,7 @@ const StyledButton = styled.button`
   display: flex;
 `;
 
-const Card = ({topic, filters}) => {
+const FilterCard = ({topic, filters}) => {
   return (
     <CardWrapper>
       <TopicWrapper>
@@ -53,4 +53,4 @@ const Card = ({topic, filters}) => {
   )
 }
 
-export default Card
+export default FilterCard
