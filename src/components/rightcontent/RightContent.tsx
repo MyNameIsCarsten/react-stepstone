@@ -52,7 +52,7 @@ const StyledSvg = styled.svg`
     max-height: 2em
   `;
 
-const RightContent = () => {
+const RightContent: React.FC  = () => {
   return (
     <>
       <RightContentWrapper>

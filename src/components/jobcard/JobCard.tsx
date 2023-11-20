@@ -25,10 +25,14 @@ const H2 = styled.h2`
   overflow: hidden;
   width: 650px;
   line-height: 30px;
+  @media (max-width: 1100px){
+    width: 500px;
+  }
   &:hover {
     cursor:pointer;
     text-decoration: underline;
-}
+    }
+
 `;
 
 const LogoWrapper = styled.img`
@@ -92,7 +96,7 @@ const BottomWrapper = styled.div`
     margin-top: -1em;
 `;
 
-const JobCard = () => {
+const JobCard: React.FC  = () => {
   return (
     <CardWrapper>
         <TopCardWrapper>

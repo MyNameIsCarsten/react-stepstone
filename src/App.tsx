@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import './App.css';
 import Navbar from './components/navbar/Navbar';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import RightContent from './components/rightcontent/RightContent';
 import LeftContent from './components/leftcontent/LeftContent';
 
 const HeaderWrapper = styled.header`
-  background: url('./background.svg');
+  background: rgb(248,179,162);
+  background: linear-gradient(69deg, rgba(248,179,162,1) 0%, rgba(108,219,223,1) 100%);
+  
   background-position: top center;
   background-attachment: scroll;
   background-repeat: no-repeat;
@@ -17,10 +18,12 @@ const HeaderWrapper = styled.header`
 
 const ContentWrapper = styled.div`
   display: flex;
-  width: 1140px;
   margin: auto;
-  padding: 1.5em;
+  margin: 1.5em;
   gap: 2em;
+  @media (max-width: 900px){
+    flex-direction: column;
+  }
 `;
 
 const LeftWrapper = styled.div`
@@ -31,7 +34,7 @@ const RightWrapper = styled.div`
   flex: 18;
 `;
 
-function Home() {
+const App: React.FC  = () => {
   return (
     <>
       <HeaderWrapper>
@@ -46,19 +49,6 @@ function Home() {
         </RightWrapper>
       </ContentWrapper>
     </>
-  );
-}
-
-function App() {
-  return (
-    <div className="App" style={{minWidth: 420}}>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          {/* Add more routes as needed */}
-        </Routes>
-      </Router>
-    </div>
   );
 }
 

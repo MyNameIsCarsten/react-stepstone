@@ -1,7 +1,7 @@
 import React from 'react'
-import FilterCard from '../filtercard/FilterCard'
+import FilterCard from '../filtercard/FilterCard';
 
-const LeftContent = () => {
+const LeftContent: React.FC = () => {
   return (
     <div>
       <FilterCard topic='Erscheinungsdatum' filters={['Neuer als 24h', 'Neuer als 7 Tage' ]}/>
