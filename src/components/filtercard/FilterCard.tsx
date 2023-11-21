@@ -28,10 +28,10 @@ interface OptionsWrapperProps {
 }
 
 const OptionsWrapper = styled.div<OptionsWrapperProps>`
-  display: ${props => props.$isVisible ? 'none' : 'flex'};
+  display: ${props => props.$isVisible ? 'flex' : 'none'};
   flex-direction: column;
   @media (max-width: 900px){
-    display: ${props => props.$isVisible ? 'flex' : 'none'};
+    display: ${props => props.$isVisible ? 'none' : 'flex'};
   }
 `;
 
@@ -43,9 +43,9 @@ const FilterWrapper = styled.div`
 const StyledSvg = styled.svg<OptionsWrapperProps>`
     max-width: 2em;
     max-height: 2em;
-    transform: ${props => props.$isVisible ? 'rotate(0deg)' : 'rotate(180deg)'};
+    transform: ${props => props.$isVisible ? 'rotate(180deg)' : 'rotate(0deg)'};
     @media (max-width: 900px){
-      transform: ${props => props.$isVisible ? 'rotate(180deg)' : 'rotate(0deg)'};
+      transform: ${props => props.$isVisible ? 'rotate(0deg)' : 'rotate(180deg)'};
     }
   `;
 

@@ -28,6 +28,12 @@ const H2 = styled.h2`
   @media (max-width: 1100px){
     width: 500px;
   }
+  @media (max-width: 700px){
+    width: 400px;
+  }
+  @media (max-width: 600px){
+    width: 300px;
+  }
   &:hover {
     cursor:pointer;
     text-decoration: underline;
@@ -44,6 +50,10 @@ const LogoWrapper = styled.img`
         cursor:pointer;
         border: 1px solid rgb(0, 0, 238);
     }
+    @media (max-width: 500px){
+        margin: auto;
+      }
+    
 `;
 
 const StyledSvg = styled.svg`
@@ -74,6 +84,9 @@ const TitleWrapper = styled.div`
 const TopCardWrapper = styled.div`
     display:flex;
     justify-content: space-between;
+    @media (max-width: 500px){
+        flex-direction: column-reverse;
+      }
 `;
 
 const BadgeWrapper = styled.p`

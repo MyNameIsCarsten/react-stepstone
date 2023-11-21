@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import JobCard from '../jobcard/JobCard';
 
@@ -48,20 +48,95 @@ const StyledSpan = styled.span`
   `;
 
 const StyledSvg = styled.svg`
-    max-width: 2em;
-    max-height: 2em
+    width: 2em;
+    height: 2em;
+    display: block;
+  `;
+
+  interface PopUpProps {
+    $depth?: number;
+    $length?: string;
+    $isClicked: boolean;
+    $hasLinks: boolean;
+  }
+
+  const PopUp = styled.div<PopUpProps>`
+    position: absolute;
+    transform: ${props => `translate3d(${props.$length || '0px'}, ${`${props.$depth}px` || '0px'}, 0px)`};
+    display: ${props => props.$isClicked && props.$hasLinks ? 'flex' : 'none'};
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 16px;
+    background-color: rgb(255, 255, 255);
+    outline: rgb(207, 214, 231) solid 1px;
+    border-radius: 16px;
+    width: max-content;
+    padding: 16px 0;
+`;
+
+  const PopUpSpan = styled.span`
+      padding: 16px;
+      &:hover {
+        color: black;
+        cursor: pointer;
+        background-color: rgb(244, 244, 237);
+      }
+  `;
+
+  interface ArrowProps {
+    $isClicked: boolean;
+  }
+  const ArrowWrapper = styled.svg<ArrowProps>`
+    transform: translate3d(36px, -35px, 0px);
+    z-index: 10;
+    display: block; /* Ensure the SVG is always displayed */
+    visibility: ${props => props.$isClicked ? 'visible' : 'hidden'};
+    height: 20px;
+    position: absolute;
   `;
 
 const RightContent: React.FC  = () => {
+  const links: string[] = ['Datum', 'Relevanz'];
+  const [isActive, setIsActive] = useState<boolean>(false);
+  const [sorting, setSorting ] = useState<string>('Datum');
+
+  const handleClick = () => {
+    setIsActive(!isActive);
+  };
+
   return (
     <>
       <RightContentWrapper>
         <H1>41 Treffer für <LinkWrapper>React</LinkWrapper> Jobs in <LinkWrapper>Minden</LinkWrapper> im Umkreis von 75 km</H1>
-        <ButtonWrapper>
+        <ButtonWrapper onClick={handleClick}>
           <StyledSpan>
-              Datum
-              <StyledSvg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 20 20" aria-labelledby="ChevronBottomIcon-608"><title id="ChevronBottomIcon-608">Chevron bottom icon</title><path fill="currentColor" d="M10 12.208a.864.864 0 01-.292-.052.64.64 0 01-.27-.198L5.75 8.292a.668.668 0 01-.177-.49.672.672 0 01.198-.469c.153-.139.312-.205.48-.198a.72.72 0 01.457.198L10 10.646l3.312-3.292a.574.574 0 01.438-.208c.167 0 .326.07.48.208a.66.66 0 01.208.479c0 .18-.07.334-.209.459l-3.667 3.666a.64.64 0 01-.27.198.864.864 0 01-.292.052z"></path></StyledSvg>
+              {sorting}
+              <StyledSvg 
+                style={{transform: `rotate(${isActive ? '180deg' : '0deg'})`}} 
+                aria-hidden="true" 
+                role="img" 
+                xmlns="http://www.w3.org/2000/svg" 
+                width="100%" 
+                height="100%" 
+                fill="none" 
+                viewBox="0 0 20 20" 
+                aria-labelledby="ChevronBottomIcon-608">
+                  <title id="ChevronBottomIcon-608">Chevron bottom icon</title>
+                  <path 
+                    fill="currentColor" 
+                    d="M10 12.208a.864.864 0 01-.292-.052.64.64 0 01-.27-.198L5.75 8.292a.668.668 0 01-.177-.49.672.672 0 01.198-.469c.153-.139.312-.205.48-.198a.72.72 0 01.457.198L10 10.646l3.312-3.292a.574.574 0 01.438-.208c.167 0 .326.07.48.208a.66.66 0 01.208.479c0 .18-.07.334-.209.459l-3.667 3.666a.64.64 0 01-.27.198.864.864 0 01-.292.052z"
+                    ></path>
+              </StyledSvg>
           </StyledSpan>
+          
+          <PopUp $length={'-6px'} $depth={107} $hasLinks={true} $isClicked={isActive}>
+            <ArrowWrapper $isClicked={isActive} viewBox="0 0 30 30">
+              <path className="stroke" style={{ fill: 'rgb(207, 214, 231)'}} d="M23.7,27.1L17,19.9C16.5,19.3,15.8,19,15,19s-1.6,0.3-2.1,0.9l-6.6,7.2C5.3,28.1,3.4,29,2,29h26 C26.7,29,24.6,28.1,23.7,27.1z"></path>
+              <path className="fill" style={{ fill: 'rgb(255, 255, 255)'}} d="M23,27.8c1.1,1.2,3.4,2.2,5,2.2h2H0h2c1.7,0,3.9-1,5-2.2l6.6-7.2c0.7-0.8,2-0.8,2.7,0L23,27.8L23,27.8z"></path>
+            </ArrowWrapper>
+            {links.map((l) => (
+              <PopUpSpan onClick={() => setSorting(l)}>{l}</PopUpSpan>
+            ))}
+          </PopUp>
       </ButtonWrapper>
       </RightContentWrapper>
       <JobWrapper>

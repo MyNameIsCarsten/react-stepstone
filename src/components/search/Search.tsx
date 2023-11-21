@@ -78,6 +78,9 @@ const SearchBarWrapper = styled.input`
     border: none;
     color: rgb(69, 94, 161);
     background-color: ${props => props.$bg ? 'rgb(225, 246, 247)' : ''};
+    &:hover {
+        cursor: pointer;
+    }
 `;
 
 const ButtonWrapper = styled.button`
@@ -91,6 +94,22 @@ const ButtonWrapper = styled.button`
     color: white;
     border-radius: 999px;
     padding: 0.4em 2em;
+    cursor: pointer;
+`;
+
+const SelectWrapper = styled.select`
+    border: none;
+    background-color: transparent;
+    color: #0C2577;
+    &:focus-visible {
+        outline: none;
+    }
+    &:hover {
+        cursor: pointer;
+    }
+`;
+
+const OptionWrapper = styled.option`
     cursor: pointer;
 `;
 
@@ -114,9 +133,21 @@ const Search: React.FC  = () => {
             <SvgButtonWrapper>
                 <svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 20 20" aria-labelledby="RemoveIcon-72"><title id="RemoveIcon-72">Remove icon</title><path fill="currentColor" d="M10 10.938l-4.167 4.166a.61.61 0 01-.448.188.645.645 0 01-.468-.209.645.645 0 01-.209-.468c0-.174.07-.33.209-.469L9.062 10 4.896 5.833a.657.657 0 01.021-.937.647.647 0 01.468-.208c.174 0 .33.07.469.208L10 9.062l4.167-4.166a.657.657 0 01.458-.198c.18-.007.34.06.479.198a.648.648 0 01.208.469c0 .173-.07.33-.208.468L10.938 10l4.166 4.167a.647.647 0 01.198.448.61.61 0 01-.198.468.646.646 0 01-.469.209.645.645 0 01-.468-.209L10 10.938z"></path></svg>
             </SvgButtonWrapper>
-            <SvgButtonWrapper $width='3.5em' $bg={true} $round={true}>
-                75
-                <svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 20 20" aria-labelledby="ChevronBottomIcon-608"><title id="ChevronBottomIcon-608">Chevron bottom icon</title><path fill="currentColor" d="M10 12.208a.864.864 0 01-.292-.052.64.64 0 01-.27-.198L5.75 8.292a.668.668 0 01-.177-.49.672.672 0 01.198-.469c.153-.139.312-.205.48-.198a.72.72 0 01.457.198L10 10.646l3.312-3.292a.574.574 0 01.438-.208c.167 0 .326.07.48.208a.66.66 0 01.208.479c0 .18-.07.334-.209.459l-3.667 3.666a.64.64 0 01-.27.198.864.864 0 01-.292.052z"></path></svg>
+            <SvgButtonWrapper $width='5em' $bg={true} $round={true}>
+                <form>
+                    <SelectWrapper name="distance" id="distance">
+                        <OptionWrapper value="5">5 km</OptionWrapper>
+                        <OptionWrapper value="10">10 km</OptionWrapper>
+                        <OptionWrapper value="20">20 km</OptionWrapper>
+                        <OptionWrapper value="30">30 km</OptionWrapper>
+                        <OptionWrapper value="40">40 km</OptionWrapper>
+                        <OptionWrapper value="50">50 km</OptionWrapper>
+                        <OptionWrapper value="60">60 km</OptionWrapper>
+                        <OptionWrapper value="70">70 km</OptionWrapper>
+                        <OptionWrapper value="75" selected={true}>75 km</OptionWrapper>
+                        <OptionWrapper value="100">100 km</OptionWrapper>
+                    </SelectWrapper>
+                </form>
             </SvgButtonWrapper>
         </SearchbarWrapper>
         <ButtonWrapper>
