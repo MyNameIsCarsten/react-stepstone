@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import JobCard from '../jobcard/JobCard';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store';
+import { useDispatch } from 'react-redux';
+import { sort } from '../../appSlice';
 
 const RightContentWrapper = styled.div`
     display: flex;
@@ -98,6 +102,11 @@ const RightContent: React.FC  = () => {
   const links: string[] = ['Datum', 'Relevanz'];
   const [isActive, setIsActive] = useState<boolean>(false);
   const [sorting, setSorting ] = useState<string>('Datum');
+  const dispatch = useDispatch();
+
+  const searchKeyword = useSelector((state: RootState) => state.app.searchKeyword)
+  const searchLocation = useSelector((state: RootState) => state.app.searchLocation)
+  const searchDistance = useSelector((state: RootState) => state.app.searchDistance)
 
   const handleClick = () => {
     setIsActive(!isActive);
@@ -106,7 +115,11 @@ const RightContent: React.FC  = () => {
   return (
     <>
       <RightContentWrapper>
-        <H1>41 Treffer für <LinkWrapper>React</LinkWrapper> Jobs in <LinkWrapper>Minden</LinkWrapper> im Umkreis von 75 km</H1>
+        {searchKeyword !== '' && searchLocation !=='' ? 
+        <H1>41 Treffer für <LinkWrapper>{searchKeyword}</LinkWrapper> Jobs in <LinkWrapper>{searchLocation}</LinkWrapper> im Umkreis von {searchDistance} km</H1>
+        : 
+        <H1>Suche nach einem Jobtitel, Kompetenz oder Firmenname und wähle einen bevorzugten Arbeitsort.</H1>
+        }
         <ButtonWrapper onClick={handleClick}>
           <StyledSpan>
               {sorting}
@@ -134,7 +147,10 @@ const RightContent: React.FC  = () => {
               <path className="fill" style={{ fill: 'rgb(255, 255, 255)'}} d="M23,27.8c1.1,1.2,3.4,2.2,5,2.2h2H0h2c1.7,0,3.9-1,5-2.2l6.6-7.2c0.7-0.8,2-0.8,2.7,0L23,27.8L23,27.8z"></path>
             </ArrowWrapper>
             {links.map((l) => (
-              <PopUpSpan onClick={() => setSorting(l)}>{l}</PopUpSpan>
+              <PopUpSpan onClick={() => {
+                setSorting(l);
+                dispatch(sort(l));
+              }}>{l}</PopUpSpan>
             ))}
           </PopUp>
       </ButtonWrapper>

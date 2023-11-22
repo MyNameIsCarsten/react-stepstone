@@ -1,5 +1,7 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import styled, { css } from 'styled-components';
+import { RootState } from '../../store';
 
 interface StyledLinkProps {
     $mobile?: boolean;
@@ -116,6 +118,7 @@ const StyledLink = styled.button<StyledLinkProps>`
   }
 
   const NavLink: React.FC<Props> = ({ title, links, svg, depth, isClicked, onClick, length }) => {
+    const userName = useSelector((state: RootState) => state.app.username)
     let path;
   
     switch (svg) {
@@ -157,7 +160,7 @@ const StyledLink = styled.button<StyledLinkProps>`
   
     return (
       <StyledLink onClick={onClick}>
-        {path === null ? <UserInitial>C</UserInitial> : ''}
+        {path === null ? <UserInitial>{userName[0]}</UserInitial> : ''}
         <PopUpTrigger>
         
           <StyledSvg

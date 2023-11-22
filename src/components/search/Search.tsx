@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { search } from '../../appSlice';
 
 const SearchbarsWrapper = styled.div`
     display: flex;
@@ -118,6 +120,12 @@ const Search: React.FC  = () => {
     const [geoIsFocused, setGeoIsFocused] = useState<boolean>(false);
     const [searchKeyword, setSearchKeyword] = useState<string>('');
     const [searchLocation, setSearchLocation] = useState<string>('');
+    const [searchDistance, setSearchDistance] = useState<number>(0);
+    const dispatch = useDispatch();
+
+    const handleDistanceChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setSearchDistance(parseInt(event.target.value));
+      };
 
   return (
     <SearchbarsWrapper>
@@ -167,7 +175,7 @@ const Search: React.FC  = () => {
             </SvgButtonWrapper>
             <SvgButtonWrapper $width='5em' $bg={true} $round={true}>
                 <form>
-                    <SelectWrapper name="distance" id="distance">
+                    <SelectWrapper name="distance" id="distance" onChange={handleDistanceChange} value={searchDistance}>
                         <OptionWrapper value="5">5 km</OptionWrapper>
                         <OptionWrapper value="10">10 km</OptionWrapper>
                         <OptionWrapper value="20">20 km</OptionWrapper>
@@ -182,7 +190,9 @@ const Search: React.FC  = () => {
                 </form>
             </SvgButtonWrapper>
         </SearchbarWrapper>
-        <ButtonWrapper>
+        <ButtonWrapper
+            onClick={() => dispatch(search({searchKeyword, searchLocation, searchDistance}))}
+        >
             Jobs finden
         </ButtonWrapper>
     </SearchbarsWrapper>
