@@ -1,5 +1,9 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components'
+import { addFilter } from './filterSlice';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store';
 
 const CardWrapper = styled.div`
     display: flex;
@@ -38,6 +42,10 @@ const OptionsWrapper = styled.div<OptionsWrapperProps>`
 const FilterWrapper = styled.div`
     border-top: 2px solid #CFD6E7;
     padding: 0.7em 0 0.7em  32px ;
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
 `;
 
 const StyledSvg = styled.svg<OptionsWrapperProps>`
@@ -67,6 +75,15 @@ type Props = {
 const FilterCard: React.FC<Props> = ({topic, filters}) => {
 
   const [expanded, setExpanded] = useState<boolean>(true);
+  const currentFilters = useSelector((state: RootState) => state.filter.currentFilters)
+  const dispatch = useDispatch();
+
+  const clickHandler = (filterValue: string) => {
+    dispatch(addFilter({
+      filterKeyword: topic, 
+      filterValue: filterValue
+    }));
+  };
 
   return (
     <CardWrapper>
@@ -77,7 +94,13 @@ const FilterCard: React.FC<Props> = ({topic, filters}) => {
         </StyledButton>
       </TopicWrapper>
       <OptionsWrapper $isVisible={expanded}>
-        {filters.map((f: string) => <FilterWrapper>{f}</FilterWrapper>)}
+      {filters.map((f: string) => (
+          currentFilters[topic] !== f ? (
+            <FilterWrapper key={f} onClick={() => clickHandler(f)}>
+              {f}
+            </FilterWrapper>
+          ) : null
+        ))}
       </OptionsWrapper>
     </CardWrapper>
   )
