@@ -24,8 +24,12 @@ const H1 = styled.h1`
     text-align: left;
 `;
 
-const LinkWrapper = styled.a`
-    color: rgb(0, 153, 176);
+const TextHighlight = styled.a`
+  color: rgb(0, 153, 176);
+`;
+
+
+const LinkWrapper = styled(TextHighlight)`
     cursor: pointer;
 `;
 
@@ -118,9 +122,13 @@ const RightContent: React.FC  = () => {
         {searchKeyword !== '' && searchLocation !=='' ? 
         <H1>41 Treffer für <LinkWrapper>{searchKeyword}</LinkWrapper> Jobs in <LinkWrapper>{searchLocation}</LinkWrapper> im Umkreis von {searchDistance} km</H1>
         : 
-        <H1>Suche nach einem Jobtitel, Kompetenz oder Firmenname und wähle einen bevorzugten Arbeitsort.</H1>
+        <H1>Suche nach einem <TextHighlight>Jobtitel, Kompetenz oder Firmenname</TextHighlight> und wähle einen bevorzugten <TextHighlight>Arbeitsort</TextHighlight>.</H1>
         }
-        <ButtonWrapper onClick={handleClick}>
+
+        {searchKeyword !== '' && searchLocation !=='' ? 
+        <ButtonWrapper 
+          onClick={handleClick}
+        >
           <StyledSpan>
               {sorting}
               <StyledSvg 
@@ -153,11 +161,17 @@ const RightContent: React.FC  = () => {
               }}>{l}</PopUpSpan>
             ))}
           </PopUp>
-      </ButtonWrapper>
+        </ButtonWrapper>
+          :
+        ''}
       </RightContentWrapper>
-      <JobWrapper>
-        <JobCard />
-      </JobWrapper>
+      {searchKeyword !== '' && searchLocation !=='' ? 
+        <JobWrapper>
+          <JobCard />
+        </JobWrapper>
+        :
+        ''
+      }
     </>
   )
 }
