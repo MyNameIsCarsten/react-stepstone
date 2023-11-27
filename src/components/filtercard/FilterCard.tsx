@@ -55,6 +55,9 @@ const StyledSvg = styled.svg<OptionsWrapperProps>`
     @media (max-width: 900px){
       transform: ${props => props.$isVisible ? 'rotate(0deg)' : 'rotate(180deg)'};
     }
+    &:focus-visible {
+      outline: transparent;
+    }
   `;
 
 const StyledButton = styled.button`
@@ -64,6 +67,9 @@ const StyledButton = styled.button`
   display: flex;
   &:hover {
     cursor: pointer;
+  }
+  &:focus-visible {
+    outline: transparent;
   }
 `;
 

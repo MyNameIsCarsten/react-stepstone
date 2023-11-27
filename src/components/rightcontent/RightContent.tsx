@@ -122,13 +122,21 @@ const RightContent: React.FC  = () => {
   return (
     <>
       <RightContentWrapper>
-        {searchKeyword !== '' && searchLocation !=='' ? 
-        <H1>{jobs.length} Treffer für <LinkWrapper>{searchKeyword}</LinkWrapper> Jobs in <LinkWrapper>{searchLocation}</LinkWrapper> im Umkreis von {searchDistance} km</H1>
+        {jobs.length > 0 || searchKeyword !== '' || searchLocation !== '' ? 
+          <H1>
+          {jobs.length} Treffer für <LinkWrapper>{searchKeyword}</LinkWrapper> Jobs{' '}
+          {searchLocation !== '' && (
+            <>
+              {'in '}
+              <LinkWrapper>{searchLocation}</LinkWrapper>
+            </>
+          )} im Umkreis von {searchDistance} km
+        </H1>
         : 
         <H1>Suche nach einem <TextHighlight>Jobtitel, Kompetenz oder Firmenname</TextHighlight> und wähle einen bevorzugten <TextHighlight>Arbeitsort</TextHighlight>.</H1>
         }
 
-        {searchKeyword !== '' && searchLocation !=='' ? 
+        {jobs.length > 0 ? 
         <ButtonWrapper 
           onClick={handleClick}
         >
@@ -169,7 +177,7 @@ const RightContent: React.FC  = () => {
           :
         ''}
       </RightContentWrapper>
-      {searchKeyword !== '' && searchLocation !=='' ? 
+
         <JobWrapper>
           {jobs.map((job, index) => 
             <JobCard 
@@ -184,9 +192,7 @@ const RightContent: React.FC  = () => {
               date={job.date}
             />)}
         </JobWrapper>
-        :
-        ''
-      }
+
     </>
   )
 }

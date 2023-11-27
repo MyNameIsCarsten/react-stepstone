@@ -285,7 +285,87 @@ const initialJobs: Job[] = [
       maxSalary: 56000,
       fastApplication: false,
       date: new Date(Date.now() + (30* 24 * 60 * 60 * 1000)).toISOString(),
-  }
+  }, 
+  {
+    title: "Frontend Developer (m/w/d)",
+    employer: "Tech Innovators Ltd",
+    cities: ['Berlin', 'Hamburg', 'München', 'Frankfurt', 'Köln'],
+    homeOffice: 'Teilweise Home-Office',
+    minSalary: 50000,
+    maxSalary: 65000,
+    fastApplication: true,
+    date: new Date(Date.now() + (2 * 60 * 60 * 1000)).toISOString(),
+  },
+  {
+    title: "UI/UX Designer (m/w/d)",
+    employer: "Digital Creations GmbH",
+    cities: ['Berlin', 'München', 'Hamburg', 'Frankfurt', 'Düsseldorf'],
+    homeOffice: 'Teilweise Home-Office',
+    minSalary: 55000,
+    maxSalary: 70000,
+    fastApplication: true,
+    date: new Date(Date.now() + (1 * 24 * 60 * 60 * 1000)).toISOString(),
+  },
+  {
+    title: "Senior Frontend Engineer (m/w/d)",
+    employer: "CodeCrafters Inc.",
+    cities: ['München', 'Berlin', 'Hamburg', 'Köln', 'Stuttgart'],
+    homeOffice: 'Vollzeit Home-Office',
+    minSalary: 60000,
+    maxSalary: 75000,
+    fastApplication: false,
+    date: new Date(Date.now() + (3 * 24 * 60 * 60 * 1000)).toISOString(),
+  },
+  {
+    title: "Frontend Architect (m/w/d)",
+    employer: "InnoSolutions AG",
+    cities: ['Berlin', 'Frankfurt', 'München', 'Hamburg', 'Düsseldorf'],
+    homeOffice: 'Vollzeit Home-Office',
+    minSalary: 70000,
+    maxSalary: 90000,
+    fastApplication: false,
+    date: new Date(Date.now() + (4 * 24 * 60 * 60 * 1000)).toISOString(),
+  },
+  {
+    title: "React.js Developer (m/w/d)",
+    employer: "Web Wizards GmbH",
+    cities: ['Berlin', 'München', 'Frankfurt', 'Hamburg', 'Köln'],
+    homeOffice: 'Teilweise Home-Office',
+    minSalary: 55000,
+    maxSalary: 70000,
+    fastApplication: true,
+    date: new Date(Date.now() + (5 * 24 * 60 * 60 * 1000)).toISOString(),
+  },
+  {
+    title: "Frontend Software Engineer (m/w/d)",
+    employer: "ByteBuilders Ltd.",
+    cities: ['Hamburg', 'Berlin', 'München', 'Frankfurt', 'Stuttgart'],
+    homeOffice: 'Teilweise Home-Office',
+    minSalary: 60000,
+    maxSalary: 75000,
+    fastApplication: true,
+    date: new Date(Date.now() + (6 * 24 * 60 * 60 * 1000)).toISOString(),
+  },
+  {
+    title: "Angular Developer (m/w/d)",
+    employer: "TechTrend Innovations",
+    cities: ['Berlin', 'München', 'Hamburg', 'Frankfurt', 'Düsseldorf'],
+    homeOffice: 'Vollzeit Home-Office',
+    minSalary: 65000,
+    maxSalary: 80000,
+    fastApplication: false,
+    date: new Date(Date.now() + (7 * 24 * 60 * 60 * 1000)).toISOString(),
+  },
+  {
+    title: "Frontend Development Lead (m/w/d)",
+    employer: "Digital Dynamics AG",
+    cities: ['München', 'Berlin', 'Hamburg', 'Köln', 'Stuttgart', 'Minden'],
+    homeOffice: 'Vollzeit Home-Office',
+    minSalary: 80000,
+    maxSalary: 100000,
+    fastApplication: false,
+    date: new Date(Date.now() + (8 * 24 * 60 * 60 * 1000)).toISOString(),
+  },
 ];
 
 export const jobsSlice = createSlice({
@@ -295,7 +375,7 @@ export const jobsSlice = createSlice({
       username: 'Carsten',
       searchKeyword: '',
       searchLocation: '',
-      searchDistance: 0,
+      searchDistance: 5,
       searchSort: 'Relevanz'
     },
     currentFilters: {},
@@ -320,9 +400,19 @@ export const jobsSlice = createSlice({
     },
     applyFilter(state) {
       state.currentJobs = [...initialJobs];
-      state.currentJobs = state.currentJobs.filter(
-        (j) => j.title.includes(state.app.searchKeyword) && j.cities.includes(state.app.searchLocation)
-      );
+      
+      if(state.app.searchKeyword !== ''){
+        state.currentJobs = state.currentJobs.filter(
+          (j) => j.title.toLowerCase().includes(state.app.searchKeyword.toLowerCase())
+        )
+      }
+
+      if(state.app.searchLocation !== ''){
+        state.currentJobs = state.currentJobs.filter(
+          (j) => j.cities.map(c => c.toLowerCase()).includes(state.app.searchLocation.toLowerCase())
+        )
+      }
+
       if (state.currentFilters['Erscheinungsdatum'] === 'Neuer als 24h') {
         state.currentJobs = state.currentJobs.filter(j => j.date <= new Date(Date.now() + (24 * 60 * 60 * 1000)).toISOString())
       } else if (state.currentFilters['Erscheinungsdatum'] === 'Neuer als 7 Tage') {
@@ -357,8 +447,6 @@ export const jobsSlice = createSlice({
       state.app.searchKeyword = action.payload.searchKeyword;
       state.app.searchLocation = action.payload.searchLocation;
       state.app.searchDistance = action.payload.searchDistance;
-      state.currentJobs = [...initialJobs];
-      state.currentJobs = state.currentJobs.filter(j => j.title.includes(state.app.searchKeyword) && j.cities.includes(state.app.searchLocation))
     },
 
     setSort(state, action: PayloadAction<string>){

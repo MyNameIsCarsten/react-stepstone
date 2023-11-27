@@ -180,7 +180,10 @@ const StyledLink = styled.span<StyledLinkProps>`
         </PopUpTrigger>
         <PopUp $depth={depth} $isClicked={isClicked} $hasLinks={links.length > 0} $length={length}>
           {links.map((l, index) => (
-            <PopUpSpan key={index}>{l}</PopUpSpan>
+            <PopUpSpan 
+              key={index}
+              onClick={() => alert("Thanks for testing the website. This feature is not implemented.")}
+            >{l}</PopUpSpan>
           ))}
         </PopUp>
       </StyledLink>
