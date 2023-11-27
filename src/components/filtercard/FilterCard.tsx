@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components'
-import { addFilter } from './filterSlice';
+import { addFilter, applyFilter } from '../jobcard/jobsSlice';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 
@@ -75,7 +75,7 @@ type Props = {
 const FilterCard: React.FC<Props> = ({topic, filters}) => {
 
   const [expanded, setExpanded] = useState<boolean>(true);
-  const currentFilters = useSelector((state: RootState) => state.filter.currentFilters)
+  const currentFilters = useSelector((state: RootState) => state.jobs.currentFilters)
   const dispatch = useDispatch();
 
   const clickHandler = (filterValue: string) => {
@@ -83,6 +83,7 @@ const FilterCard: React.FC<Props> = ({topic, filters}) => {
       filterKeyword: topic, 
       filterValue: filterValue
     }));
+    dispatch(applyFilter());
   };
 
   return (

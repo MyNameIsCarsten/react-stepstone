@@ -43,7 +43,7 @@ const Wrapper = styled.nav`
 
 const Navbar: React.FC  = () => {
   const [activeLink, setActiveLink] = useState<string | null>(null);
-  const userName = useSelector((state: RootState) => state.app.username)
+  const userName = useSelector((state: RootState) => state.jobs.app.username)
 
   const handleNavLinkClick = (title: string) => {
     setActiveLink(activeLink === title ? null : title);

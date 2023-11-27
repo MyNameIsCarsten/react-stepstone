@@ -7,7 +7,7 @@ interface StyledLinkProps {
     $mobile?: boolean;
   }
 
-const StyledLink = styled.button<StyledLinkProps>`
+const StyledLink = styled.span<StyledLinkProps>`
     display: flex;
     align-items: center;
     background-color: transparent;
@@ -118,7 +118,7 @@ const StyledLink = styled.button<StyledLinkProps>`
   }
 
   const NavLink: React.FC<Props> = ({ title, links, svg, depth, isClicked, onClick, length }) => {
-    const userName = useSelector((state: RootState) => state.app.username)
+    const userName = useSelector((state: RootState) => state.jobs.app.username)
     let path;
   
     switch (svg) {
@@ -179,8 +179,8 @@ const StyledLink = styled.button<StyledLinkProps>`
           {title}
         </PopUpTrigger>
         <PopUp $depth={depth} $isClicked={isClicked} $hasLinks={links.length > 0} $length={length}>
-          {links.map((l) => (
-            <PopUpSpan>{l}</PopUpSpan>
+          {links.map((l, index) => (
+            <PopUpSpan key={index}>{l}</PopUpSpan>
           ))}
         </PopUp>
       </StyledLink>

@@ -4,7 +4,7 @@ import JobCard from '../jobcard/JobCard';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { useDispatch } from 'react-redux';
-import { sort } from '../../appSlice';
+import { applyFilter, setSort } from '../jobcard/jobsSlice';
 
 const RightContentWrapper = styled.div`
     display: flex;
@@ -105,12 +105,15 @@ const StyledSvg = styled.svg`
 const RightContent: React.FC  = () => {
   const links: string[] = ['Datum', 'Relevanz'];
   const [isActive, setIsActive] = useState<boolean>(false);
-  const [sorting, setSorting ] = useState<string>('Datum');
+  const [sorting, setSorting ] = useState<string>('Relevanz');
   const dispatch = useDispatch();
 
-  const searchKeyword = useSelector((state: RootState) => state.app.searchKeyword)
-  const searchLocation = useSelector((state: RootState) => state.app.searchLocation)
-  const searchDistance = useSelector((state: RootState) => state.app.searchDistance)
+  const searchKeyword = useSelector((state: RootState) => state.jobs.app.searchKeyword)
+  const searchLocation = useSelector((state: RootState) => state.jobs.app.searchLocation)
+  const searchDistance = useSelector((state: RootState) => state.jobs.app.searchDistance)
+
+  const jobs = useSelector((state: RootState) => state.jobs.currentJobs)
+
 
   const handleClick = () => {
     setIsActive(!isActive);
@@ -120,7 +123,7 @@ const RightContent: React.FC  = () => {
     <>
       <RightContentWrapper>
         {searchKeyword !== '' && searchLocation !=='' ? 
-        <H1>41 Treffer für <LinkWrapper>{searchKeyword}</LinkWrapper> Jobs in <LinkWrapper>{searchLocation}</LinkWrapper> im Umkreis von {searchDistance} km</H1>
+        <H1>{jobs.length} Treffer für <LinkWrapper>{searchKeyword}</LinkWrapper> Jobs in <LinkWrapper>{searchLocation}</LinkWrapper> im Umkreis von {searchDistance} km</H1>
         : 
         <H1>Suche nach einem <TextHighlight>Jobtitel, Kompetenz oder Firmenname</TextHighlight> und wähle einen bevorzugten <TextHighlight>Arbeitsort</TextHighlight>.</H1>
         }
@@ -154,10 +157,11 @@ const RightContent: React.FC  = () => {
               <path className="stroke" style={{ fill: 'rgb(207, 214, 231)'}} d="M23.7,27.1L17,19.9C16.5,19.3,15.8,19,15,19s-1.6,0.3-2.1,0.9l-6.6,7.2C5.3,28.1,3.4,29,2,29h26 C26.7,29,24.6,28.1,23.7,27.1z"></path>
               <path className="fill" style={{ fill: 'rgb(255, 255, 255)'}} d="M23,27.8c1.1,1.2,3.4,2.2,5,2.2h2H0h2c1.7,0,3.9-1,5-2.2l6.6-7.2c0.7-0.8,2-0.8,2.7,0L23,27.8L23,27.8z"></path>
             </ArrowWrapper>
-            {links.map((l) => (
-              <PopUpSpan onClick={() => {
+            {links.map((l, index) => (
+              <PopUpSpan key={index} onClick={() => {
                 setSorting(l);
-                dispatch(sort(l));
+                dispatch(setSort(l));
+                dispatch(applyFilter());
               }}>{l}</PopUpSpan>
             ))}
           </PopUp>
@@ -167,7 +171,18 @@ const RightContent: React.FC  = () => {
       </RightContentWrapper>
       {searchKeyword !== '' && searchLocation !=='' ? 
         <JobWrapper>
-          <JobCard />
+          {jobs.map((job, index) => 
+            <JobCard 
+              key={index}
+              title={job.title}
+              employer={job.employer}
+              cities={job.cities}
+              homeOffice={job.homeOffice}
+              minSalary={job.minSalary}
+              maxSalary={job.maxSalary}
+              fastApplication={job.fastApplication}
+              date={job.date}
+            />)}
         </JobWrapper>
         :
         ''

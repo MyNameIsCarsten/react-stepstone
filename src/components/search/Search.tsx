@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { search } from '../../appSlice';
+import { setSearch } from '../jobcard/jobsSlice';
 
 const SearchbarsWrapper = styled.div`
     display: flex;
@@ -129,7 +129,7 @@ const Search: React.FC  = () => {
     const [geoIsFocused, setGeoIsFocused] = useState<boolean>(false);
     const [searchKeyword, setSearchKeyword] = useState<string>('');
     const [searchLocation, setSearchLocation] = useState<string>('');
-    const [searchDistance, setSearchDistance] = useState<number>(0);
+    const [searchDistance, setSearchDistance] = useState<number>(5);
     const [placeholderColorKeyword, setPlaceholderColorKeyword] = useState<string>('#75758B');
     const [placeholderColorLocation, setPlaceholderColorLocation] = useState<string>('#75758B');
     const dispatch = useDispatch();
@@ -140,7 +140,7 @@ const Search: React.FC  = () => {
 
     const handleSearch = () => {
         if(searchKeyword !== '' && searchLocation !== '' && searchDistance !== 0){
-            dispatch(search({searchKeyword, searchLocation, searchDistance}));
+            dispatch(setSearch({searchKeyword, searchLocation, searchDistance}));
         }
         if(searchKeyword === ''){
             setPlaceholderColorKeyword('red');
@@ -200,7 +200,11 @@ const Search: React.FC  = () => {
             </SvgButtonWrapper>
             <SvgButtonWrapper $width='5em' $bg={true} $round={true}>
                 <form>
-                    <SelectWrapper name="distance" id="distance" onChange={handleDistanceChange} value={searchDistance}>
+                    <SelectWrapper 
+                        name="distance" 
+                        id="distance" 
+                        onChange={handleDistanceChange} 
+                        value={searchDistance}>
                         <OptionWrapper value="5">5 km</OptionWrapper>
                         <OptionWrapper value="10">10 km</OptionWrapper>
                         <OptionWrapper value="20">20 km</OptionWrapper>
@@ -209,7 +213,7 @@ const Search: React.FC  = () => {
                         <OptionWrapper value="50">50 km</OptionWrapper>
                         <OptionWrapper value="60">60 km</OptionWrapper>
                         <OptionWrapper value="70">70 km</OptionWrapper>
-                        <OptionWrapper value="75" selected={true}>75 km</OptionWrapper>
+                        <OptionWrapper value="75">75 km</OptionWrapper>
                         <OptionWrapper value="100">100 km</OptionWrapper>
                     </SelectWrapper>
                 </form>
