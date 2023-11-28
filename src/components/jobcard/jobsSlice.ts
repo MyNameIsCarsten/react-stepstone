@@ -437,6 +437,14 @@ export const jobsSlice = createSlice({
           return new Date(a.date).getTime() - new Date(b.date).getTime();
         });
       }
+
+      if(state.currentFilters['Städte']){
+        state.currentJobs = state.currentJobs.filter(j => j.cities.includes(state.currentFilters['Städte']))
+      } 
+
+      if(state.currentFilters['Arbeitgeber']){
+        state.currentJobs = state.currentJobs.filter(j => j.employer.includes(state.currentFilters['Arbeitgeber']))
+      } 
     },
 
     setSearch(state, action: PayloadAction<{
