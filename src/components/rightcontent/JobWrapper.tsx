@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 import JobCard from '../jobcard/JobCard';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../store';
+import { RootState } from '../../store/store';
 
 const JWrapper = styled.div`
     display: flex;

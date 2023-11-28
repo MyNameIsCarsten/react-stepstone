@@ -1,9 +1,9 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { RootState } from '../../store'
+import { RootState } from '../../store/store'
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { applyFilter, resetAllFilters, resetFilter } from '../jobcard/jobsSlice';
+import { applyFilter, resetAllFilters, resetFilter } from '../../store/jobsSlice';
 
 const CurrentFilters = styled.div`
   display: flex;
@@ -30,7 +30,7 @@ const FilterButton = styled.button`
   }
 `;
 
-const StyledSvg = styled.svg`
+const StyledFilterSvg = styled.svg`
     max-width: 1em;
     max-height: 1em;
     font-size: 16px;
@@ -65,7 +65,7 @@ const CurrentFiltersWrapper: React.FC = () => {
               <FilterButton key={f}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                   {currentFilters[f]}
-                  <StyledSvg
+                  <StyledFilterSvg
                     aria-hidden="true"
                     role="img"
                     xmlns="http://www.w3.org/2000/svg"
@@ -81,7 +81,7 @@ const CurrentFiltersWrapper: React.FC = () => {
                       fill="currentColor"
                       d="M10 10.938l-4.167 4.166a.61.61 0 01-.448.188.645.645 0 01-.468-.209.645.645 0 01-.209-.468c0-.174.07-.33.209-.469L9.062 10 4.896 5.833a.657.657 0 01.021-.937.647.647 0 01.468-.208c.174 0 .33.07.469.208L10 9.062l4.167-4.166a.657.657 0 01.458-.198c.18-.007.34.06.479.198a.648.648 0 01.208.469c0 .173-.07.33-.208.468L10.938 10l4.166 4.167a.647.647 0 01.198.448.61.61 0 01-.198.468.646.646 0 01-.469.209.645.645 0 01-.468-.209L10 10.938z"
                     ></path>
-                  </StyledSvg>
+                  </StyledFilterSvg>
                 </div>
               </FilterButton>
             ))}

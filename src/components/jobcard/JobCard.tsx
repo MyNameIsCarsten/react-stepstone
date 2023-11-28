@@ -28,8 +28,6 @@ const BadgeWrapper = styled.p`
     font-size: 12px;
 `;
 
-
-
 type Props = {
     title: string; 
     employer: string;

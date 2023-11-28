@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { applyFilter, setSearch } from '../jobcard/jobsSlice';
+import { applyFilter, setSearch } from '../../store/jobsSlice';
 import KeywordSearchWrapper from './KeywordSearchWrapper';
 import LocationSearchWrapper from './LocationSearchWrapper';
 
@@ -33,7 +33,6 @@ const ButtonWrapper = styled.button`
         outline: transparent;
     }
 `;
-
 
 const Search: React.FC  = () => {
     

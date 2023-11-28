@@ -1,71 +1,61 @@
-# Getting Started with Create React App
+# StepStone Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This project is a clone of the StepStone website, demonstrating proficiency in using TypeScript, Styled Components, React, Redux, and Semantic HTML. It serves as a showcase of web development skills and the ability to recreate a complex web application.
 
-In the project directory, you can run:
+## Technologies Used
 
-### `npm start`
+- **React**: A JavaScript library for building user interfaces.
+- **Redux**: A state management library for managing the application's state.
+- **TypeScript**: A superset of JavaScript that adds static typing to the language.
+- **Styled Components**: A library for styling React components using tagged template literals.
+- **Semantic HTML**: Utilizing HTML5 to create a clear and meaningful structure for better accessibility and SEO.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Responsive Design**: The application is designed to be responsive, providing an optimal viewing experience across a wide range of devices.
+  
+- **State Management with Redux**: Utilizes Redux to manage the state of the application, providing a centralized and predictable state container.
 
-### `npm test`
+- **Styled Components**: Styles are implemented using Styled Components, offering a modular and maintainable approach to styling.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **TypeScript Integration**: The use of TypeScript adds static typing to the project, enhancing code quality and providing better development tooling support.
 
-### `npm run build`
+## Getting Started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Clone the Repository**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   git clone https://github.com/MyNameIsCarsten/react-stepstone.git
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Install Dependencies**
 
-### `npm run eject`
+   ```bash
+   cd stepstone-clone
+   npm install
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. **Run the Application**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```bash
+   npm start
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   The application will be accessible at `http://localhost:3000` in your web browser.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Folder Structure
 
-## Learn More
+- **src/components**: Contains React components used to build the UI.
+- **src/store**: Houses Redux-related files, such as actions, reducers, and the store configuration.
+- **src/styles**: Holds global styles, themes, or any other styling-related files.
+- **public**: Contains static assets and the HTML template.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contributing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Feel free to contribute by opening issues or submitting pull requests. Follow the established coding style and structure.
 
-### Code Splitting
+## Acknowledgments
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# react-stepstone
+This project was created as a demonstration of skills and is not affiliated with or endorsed by StepStone. All trademarks are the property of their respective owners.

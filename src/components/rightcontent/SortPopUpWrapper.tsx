@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import { applyFilter, setSort } from '../jobcard/jobsSlice';
+import { applyFilter, setSort } from '../../store/jobsSlice';
 import ArrowWrapper from './ArrowWrapper';
 import { useDispatch } from 'react-redux';
 
@@ -10,7 +10,6 @@ interface PopUpProps {
     $isClicked: boolean;
     $hasLinks: boolean;
   }
-
 
 const PopUp = styled.div<PopUpProps>`
     position: absolute;

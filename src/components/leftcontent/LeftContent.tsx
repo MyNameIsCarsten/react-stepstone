@@ -1,7 +1,7 @@
 import React from 'react'
 import FilterCard from '../filtercard/FilterCard';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../store';
+import { RootState } from '../../store/store';
 import CurrentFiltersWrapper from './CurrentFiltersWrapper';
 
 

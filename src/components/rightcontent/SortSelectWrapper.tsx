@@ -6,7 +6,7 @@ const SortSpan = styled.span`
     align-items: center;
   `;
 
-const StyledSvg = styled.svg`
+const StyledSortSvg = styled.svg`
     width: 2em;
     height: 2em;
     display: block;
@@ -22,7 +22,7 @@ const SortSelectWrapper: React.FC<Props> = ({ sorting, isActive }) => {
   return (
     <SortSpan>
         {sorting}
-        <StyledSvg 
+        <StyledSortSvg 
         style={{transform: `rotate(${isActive ? '180deg' : '0deg'})`}} 
         aria-hidden="true" 
         role="img" 
@@ -37,7 +37,7 @@ const SortSelectWrapper: React.FC<Props> = ({ sorting, isActive }) => {
             fill="currentColor" 
             d="M10 12.208a.864.864 0 01-.292-.052.64.64 0 01-.27-.198L5.75 8.292a.668.668 0 01-.177-.49.672.672 0 01.198-.469c.153-.139.312-.205.48-.198a.72.72 0 01.457.198L10 10.646l3.312-3.292a.574.574 0 01.438-.208c.167 0 .326.07.48.208a.66.66 0 01.208.479c0 .18-.07.334-.209.459l-3.667 3.666a.64.64 0 01-.27.198.864.864 0 01-.292.052z"
             ></path>
-        </StyledSvg>
+        </StyledSortSvg>
     </SortSpan>
   )
 }

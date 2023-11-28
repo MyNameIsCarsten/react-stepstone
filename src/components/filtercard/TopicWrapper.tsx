@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
+import { StyledSvg } from '../../styles/CommonStyles';
 
 const TWrapper = styled.div`
     font-weight: bold;
@@ -8,22 +9,6 @@ const TWrapper = styled.div`
     justify-content: space-between;
     align-items: center;
 `;
-
-interface OptionsWrapperProps {
-    $isVisible?: boolean;
-  }
-
-const StyledSvg = styled.svg<OptionsWrapperProps>`
-    max-width: 2em;
-    max-height: 2em;
-    transform: ${props => props.$isVisible ? 'rotate(180deg)' : 'rotate(0deg)'};
-    @media (max-width: 900px){
-      transform: ${props => props.$isVisible ? 'rotate(0deg)' : 'rotate(180deg)'};
-    }
-    &:focus-visible {
-      outline: transparent;
-    }
-  `;
 
 const StyledButton = styled.button`
   border:none;

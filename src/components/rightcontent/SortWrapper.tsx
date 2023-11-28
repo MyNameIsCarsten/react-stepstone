@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
-import { RootState } from '../../store';
+import { RootState } from '../../store/store';
 import styled from 'styled-components';
 import SortSelectWrapper from './SortSelectWrapper';
 import SortPopUpWrapper from './SortPopUpWrapper';
