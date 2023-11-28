@@ -19,7 +19,7 @@ const LeftContent: React.FC = () => {
   
 
   return (
-    <div>
+    <>
       <CurrentFiltersWrapper />
       
       <FilterCard topic='Erscheinungsdatum' filters={['Neuer als 24h', 'Neuer als 7 Tage' ]}/>
@@ -27,7 +27,7 @@ const LeftContent: React.FC = () => {
       <FilterCard topic='Bewerbungsart' filters={['Auf Unternehmenswebsite', 'Schnelle Bewerbung' ]}/>
       <FilterCard topic='Städte' filters={uniqueJobArray}/>
       <FilterCard topic='Arbeitgeber' filters={uniqueEmployerArray}/>
-    </div>
+    </>
   )
 }
 

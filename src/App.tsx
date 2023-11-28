@@ -27,11 +27,11 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const LeftWrapper = styled.div`
+const LeftWrapper = styled.aside`
   flex: 6;
 `;
 
-const RightWrapper = styled.div`
+const RightWrapper = styled.main`
   flex: 18;
 `;
 

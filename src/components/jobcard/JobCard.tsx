@@ -5,7 +5,7 @@ import BottomCardWrapper from './BottomCardWrapper';
 import CitiesCardWrapper from './CitiesCardWrapper';
 import OfficeSalaryCardWrapper from './OfficeSalaryCardWrapper';
 
-const CardWrapper = styled.div`
+const CardWrapper = styled.article`
     display: flex;
     flex-direction: column;
     gap: 5px;
