@@ -35,7 +35,7 @@ const PopUp = styled.div<PopUpProps>`
 
 interface Props {
     isActive: boolean;
-    setSorting: any;
+    setSorting: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const SortPopUpWrapper: React.FC<Props> = ({ isActive, setSorting }) => {

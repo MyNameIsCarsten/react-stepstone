@@ -1,11 +1,13 @@
 import { Action, ThunkAction, configureStore } from '@reduxjs/toolkit'
 import jobsReducer from './jobsSlice';
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
     jobs: jobsReducer,
   }
 })
+
+export default store;
 
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch

@@ -46,7 +46,7 @@ interface SvgProps {
 
 interface Props {
     searchKeyword: string;
-    setSearchKeyword: any;
+    setSearchKeyword: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const KeywordSearchWrapper: React.FC<Props> = ({ searchKeyword, setSearchKeyword }) => {

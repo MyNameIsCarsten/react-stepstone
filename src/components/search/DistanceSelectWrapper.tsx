@@ -19,7 +19,7 @@ const OptionWrapper = styled.option`
 
 interface Props {
     searchDistance: number;
-    setSearchDistance: any;
+    setSearchDistance: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const DistanceSelectWrapper: React.FC<Props> = ({ searchDistance, setSearchDistance }) => {

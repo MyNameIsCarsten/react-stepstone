@@ -49,9 +49,9 @@ const SvgButtonWrapper = styled.button<SvgProps>`
 
 interface Props {
     searchLocation: string;
-    setSearchLocation: any;
+    setSearchLocation: React.Dispatch<React.SetStateAction<string>>;
     searchDistance: number;
-    setSearchDistance: any;
+    setSearchDistance: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const LocationSearchWrapper: React.FC<Props> = ({ searchLocation, setSearchLocation, searchDistance, setSearchDistance }) => {

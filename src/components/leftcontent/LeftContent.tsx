@@ -16,8 +16,6 @@ const LeftContent: React.FC = () => {
   const concatenatedEmployerArray: string[] = ([] as string[]).concat(...employerArray);
   const uniqueEmployerArray: string[] = [...new Set(concatenatedEmployerArray)];
 
-  
-
   return (
     <>
       <CurrentFiltersWrapper />

@@ -26,8 +26,8 @@ const FilterCard: React.FC<Props> = ({topic, filters}) => {
   const [expanded, setExpanded] = useState<boolean>(true);
   
   return (
-    <CardWrapper>
-      <TopicWrapper topic={topic} expanded={expanded} setExpanded={{setExpanded}}/>
+    <CardWrapper data-testid='cardWrapper'>
+      <TopicWrapper topic={topic} expanded={expanded} setExpanded={setExpanded}/>
       <OptionsWrapper topic={topic}  expanded={expanded} filters={filters}/>
     </CardWrapper>
   )

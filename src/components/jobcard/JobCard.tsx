@@ -17,6 +17,11 @@ const CardWrapper = styled.article`
     color: rgb(12, 37, 119);
     margin-bottom: 16px;
     padding: 24px;
+    &:hover {
+      box-shadow: 0 0 0 3px;
+      color: #006981;
+      border: 2px solid transparent;
+    }
 `;
 
 const BadgeWrapper = styled.p`

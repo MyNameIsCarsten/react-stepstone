@@ -46,7 +46,7 @@ const OptionsWrapper: React.FC<Props> = ({topic, expanded, filters}) => {
       };
 
   return (
-    <OWrapper $isVisible={expanded}>
+    <OWrapper $isVisible={expanded}  data-testid='optionsWrapper'>
       {filters.map((f: string) => (
           currentFilters[topic] !== f ? (
             <FilterWrapper key={f} onClick={() => clickHandler(f)}>

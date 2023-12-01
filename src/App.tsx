@@ -38,10 +38,10 @@ const RightWrapper = styled.main`
 const App: React.FC  = () => {
   return (
     <>
-      <HeaderWrapper>
-        <Navbar />
+      <HeaderWrapper data-testid='headerWrapper'>
+        <Navbar data-testid='navbar'/>
       </HeaderWrapper>
-      <ContentWrapper>
+      <ContentWrapper data-testid='contentWrapper'>
         <LeftWrapper>
           <LeftContent/>
         </LeftWrapper>

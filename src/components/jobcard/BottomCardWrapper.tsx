@@ -24,7 +24,7 @@ const StyledSvgBig= styled.svg`
 type Props = {
     date: string;
     isLiked: boolean;
-    clickLike: any;
+    clickLike: () => void
 }
 
 const BottomCardWrapper: React.FC<Props>  = ({date, isLiked, clickLike}) => {
