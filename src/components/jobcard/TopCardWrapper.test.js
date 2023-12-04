@@ -35,7 +35,7 @@ describe('TopCardWrapper', () => {
     const logoElement = screen.getByAltText('Logo');
 
     userEvent.hover(logoElement);
-    expect(logoElement).toHaveStyle('border: 1px solid rgb(0, 0, 238);');
+    expect(logoElement).toHaveStyle('border: 2px solid #006981;');
 
   });
 });

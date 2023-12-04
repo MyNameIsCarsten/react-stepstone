@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import logo1 from '../../companyLogo1.avif';
+import logo1 from '../../company.png';
 import { StyledSvgBasic } from '../../styles/CommonStyles';
 
 const TCardWrapper = styled.div`
@@ -44,11 +44,11 @@ const H2 = styled.h2`
 const LogoWrapper = styled.img`
     width: 64px;
     height: 64px;
-    border: 1px solid #CFD6E7;
+    border: 2px solid #CFD6E7;
     border-radius: 16px;
     &:hover {
         cursor:pointer;
-        border: 1px solid rgb(0, 0, 238);
+        border: 2px solid #006981;
     }
     @media (max-width: 500px){
         margin: auto;

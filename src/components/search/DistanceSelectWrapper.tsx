@@ -29,12 +29,14 @@ const DistanceSelectWrapper: React.FC<Props> = ({ searchDistance, setSearchDista
       };
 
   return (
-    <form>
+    <form data-testid='distanceSelectWrapper'>
         <SelectWrapper 
             name="distance" 
             id="distance" 
             onChange={handleDistanceChange} 
-            value={searchDistance}>
+            value={searchDistance}
+            data-testid='selectWrapper'
+            >
             <OptionWrapper value="5">5 km</OptionWrapper>
             <OptionWrapper value="10">10 km</OptionWrapper>
             <OptionWrapper value="20">20 km</OptionWrapper>

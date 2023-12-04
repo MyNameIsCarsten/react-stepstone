@@ -47,7 +47,7 @@ const Search: React.FC  = () => {
     };
 
   return (
-    <SearchbarsWrapper>
+    <SearchbarsWrapper data-testid='searchBarsWrapper'>
         <KeywordSearchWrapper searchKeyword={searchKeyword} setSearchKeyword={setSearchKeyword}/>
         <LocationSearchWrapper 
             searchLocation={searchLocation} 
@@ -55,7 +55,7 @@ const Search: React.FC  = () => {
             searchDistance={searchDistance}
             setSearchDistance={setSearchDistance}
         />
-        <ButtonWrapper onClick={handleSearch}>Jobs finden</ButtonWrapper>
+        <ButtonWrapper onClick={handleSearch} data-testid='searchBarButton'>Jobs finden</ButtonWrapper>
     </SearchbarsWrapper>
   )
 }
