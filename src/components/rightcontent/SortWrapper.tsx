@@ -34,7 +34,7 @@ const SortWrapper: React.FC = () => {
 
   return (
     jobs.length > 0 ? 
-        <ButtonWrapper onClick={handleClick}>
+        <ButtonWrapper onClick={handleClick} data-testid='sortButtonWrapper'>
           <SortSelectWrapper sorting={sorting} isActive={isActive} />
           <SortPopUpWrapper isActive={isActive} setSorting={setSorting} />
         </ButtonWrapper>

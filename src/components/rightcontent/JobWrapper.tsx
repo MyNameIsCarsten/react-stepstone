@@ -13,7 +13,7 @@ const JobWrapper: React.FC = () => {
     const jobs = useSelector((state: RootState) => state.jobs.currentJobs)
 
   return (
-    <JWrapper>
+    <JWrapper data-testid='jobWrapper'>
         {jobs.map((job, index) => 
         <JobCard 
             key={index}

@@ -20,7 +20,7 @@ interface Props {
 const SortSelectWrapper: React.FC<Props> = ({ sorting, isActive }) => {
 
   return (
-    <SortSpan>
+    <SortSpan data-testid='sortSpan'>
         {sorting}
         <StyledSortSvg 
         style={{transform: `rotate(${isActive ? '180deg' : '0deg'})`}} 

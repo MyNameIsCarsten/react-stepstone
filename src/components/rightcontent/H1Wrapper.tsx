@@ -27,7 +27,7 @@ const H1Wrapper: React.FC = () => {
 
   return (
     jobs.length > 0 || searchKeyword !== '' || searchLocation !== '' ? 
-        <H1>
+        <H1 data-testid='h1Wrapper'>
             {jobs.length} Treffer für <LinkWrapper>{searchKeyword}</LinkWrapper> Jobs{' '}
             {searchLocation !== '' && (
             <>

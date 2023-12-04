@@ -43,15 +43,19 @@ const SortPopUpWrapper: React.FC<Props> = ({ isActive, setSorting }) => {
     const dispatch = useDispatch();
 
   return (
-    <PopUp $length={'-6px'} $depth={107} $hasLinks={true} $isClicked={isActive}>
-    <ArrowWrapper isActive={isActive} />
-    {links.map((l, index) => (
-        <PopUpSpan key={index} onClick={() => {
-        setSorting(l);
-        dispatch(setSort(l));
-        dispatch(applyFilter());
-        }}>{l}</PopUpSpan>
-    ))}
+    <PopUp $length={'-6px'} $depth={107} $hasLinks={true} $isClicked={isActive} data-testid='sortPopUp'>
+      <ArrowWrapper isActive={isActive} />
+      {links.map((l, index) => (
+          <PopUpSpan data-testid='popUpSpan'
+            key={index} 
+            onClick={() => {
+              setSorting(l);
+              dispatch(setSort(l));
+              dispatch(applyFilter());
+            }}>
+            {l}
+          </PopUpSpan>
+      ))}
     </PopUp>
 )
 }
