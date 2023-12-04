@@ -29,7 +29,6 @@ type Props = {
 
 const BottomCardWrapper: React.FC<Props>  = ({date, isLiked, clickLike}) => {
 
-    // Assuming your date is stored in an object like this
     const dateObject: { date: Date } = { date: new Date(date) };
 
     // Convert the date string to a JavaScript Date object
@@ -48,10 +47,10 @@ const BottomCardWrapper: React.FC<Props>  = ({date, isLiked, clickLike}) => {
     const time = elapsedHours >= 24 ? `${elapsedDays} ${timeMetricDays}` : `${elapsedHours} ${timeMetricHours}`;
 
   return (
-    <BottomWrapper>
+    <BottomWrapper data-testid='bottomWrapper'>
         <TimeWrapper>vor {time}</TimeWrapper>
         {!isLiked ? 
-        <StyledSvgBig 
+        <StyledSvgBig data-testid='svg'
             onClick={clickLike}
             data-genesis-element="HeartEmptyIcon" 
             aria-hidden="true" 

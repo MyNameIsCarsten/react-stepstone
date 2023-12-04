@@ -52,7 +52,7 @@ const JobCard: React.FC<Props>  = ( {title, employer, cities, homeOffice, minSal
     };
 
   return (
-    <CardWrapper>
+    <CardWrapper data-testid='cardWrapper'>
         <TopCardWrapper title={title} employer={employer} />
         <CitiesCardWrapper cities={cities}/>
         <OfficeSalaryCardWrapper homeOffice={homeOffice} minSalary={minSalary} maxSalary={maxSalary}/>

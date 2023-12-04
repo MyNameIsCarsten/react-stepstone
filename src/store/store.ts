@@ -5,7 +5,7 @@ const store = configureStore({
   reducer: {
     jobs: jobsReducer,
   }
-})
+});
 
 export default store;
 

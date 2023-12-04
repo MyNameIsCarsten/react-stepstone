@@ -59,10 +59,10 @@ const CurrentFiltersWrapper: React.FC = () => {
     };
 
     return (
-        Object.keys(currentFilters).length > 0 ? (
-          <CurrentFilters>
+      currentFilters && Object.keys(currentFilters).length > 0 ? (
+        <CurrentFilters data-testid='currentFilters'>
             {Object.keys(currentFilters).map((f) => (
-              <FilterButton key={f}>
+                <FilterButton key={f}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                   {currentFilters[f]}
                   <StyledFilterSvg
@@ -75,6 +75,7 @@ const CurrentFiltersWrapper: React.FC = () => {
                     viewBox="0 0 20 20"
                     aria-labelledby="RemoveIcon-72"
                     onClick={() => handleDeleteFilter(f)}
+                    data-testid='deleteSVG'
                   >
                     <title id="RemoveIcon-72">Remove icon</title>
                     <path
