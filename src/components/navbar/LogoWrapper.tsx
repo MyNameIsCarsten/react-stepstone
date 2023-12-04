@@ -8,7 +8,7 @@ const LWrapper = styled.div`
 
 const LogoWrapper: React.FC  = () => {
   return (
-    <LWrapper>
+    <LWrapper data-testid='logoWrapper'>
         <Logo style={{width: '16em', height: '3em'}}/>
     </LWrapper>
   )

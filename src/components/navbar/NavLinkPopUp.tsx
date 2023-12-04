@@ -58,7 +58,7 @@ interface Props {
 
 const NavLinkPopUp: React.FC<Props> = ({ depth, isClicked, links, length }) => {
   return (
-    <PopUp $depth={depth} $isClicked={isClicked} $hasLinks={links.length > 0} $length={length}>
+    <PopUp $depth={depth} $isClicked={isClicked} $hasLinks={links.length > 0} $length={length} data-testid='popUp'>
         {links.map((l, index) => (
         <PopUpSpan 
             key={index}

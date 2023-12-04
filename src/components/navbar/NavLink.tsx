@@ -91,8 +91,8 @@ const StyledLink = styled.span<StyledLinkProps>`
     }
   
     return (
-      <StyledLink onClick={onClick}>
-        {path === null ? <UserInitial>{userName[0]}</UserInitial> : ''}
+      <StyledLink onClick={onClick} data-testid='navLink'>
+        {path === null ? <UserInitial data-testid='username'>{userName[0]}</UserInitial> : ''}
         <NavLinkTitle path={path} title={title}/>
         <NavLinkPopUp depth={depth} isClicked={isClicked} links={links} length={length}/>
       </StyledLink>
