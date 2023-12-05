@@ -7,6 +7,9 @@ import CurrentFiltersWrapper from './CurrentFiltersWrapper';
 
 const LeftContent: React.FC = () => {
 
+  const searchKeyword = useSelector((state: RootState) => state.jobs.app.searchKeyword)
+  const searchLocation = useSelector((state: RootState) => state.jobs.app.searchLocation)
+
   const currentjobs = useSelector((state: RootState) => state.jobs.currentJobs)
   const jobsArray: string[][] = currentjobs ? currentjobs.map((j) => j.cities) : [];
 
@@ -20,15 +23,21 @@ const LeftContent: React.FC = () => {
 
   return (
     <>
-      <CurrentFiltersWrapper data-testid='currentFilters' />
-      
-      <FilterCard topic='Erscheinungsdatum' filters={['Neuer als 24h', 'Neuer als 7 Tage' ]}/>
-      <FilterCard topic='Home-Office Optionen' filters={['Teilweise Home-Office', 'Nur Home-Office' ]}/>
-      <FilterCard topic='Bewerbungsart' filters={['Auf Unternehmenswebsite', 'Schnelle Bewerbung' ]}/>
-      <FilterCard topic='Städte' filters={uniqueJobArray}/>
-      <FilterCard topic='Arbeitgeber' filters={uniqueEmployerArray}/>
+      {searchKeyword !== '' || searchLocation !== '' ? (
+        <>
+          <CurrentFiltersWrapper data-testid='currentFilters' />
+          <FilterCard topic='Erscheinungsdatum' filters={['Neuer als 24h', 'Neuer als 7 Tage']} />
+          <FilterCard topic='Home-Office Optionen' filters={['Teilweise Home-Office', 'Nur Home-Office']} />
+          <FilterCard topic='Bewerbungsart' filters={['Auf Unternehmenswebsite', 'Schnelle Bewerbung']} />
+          <FilterCard topic='Städte' filters={uniqueJobArray} />
+          <FilterCard topic='Arbeitgeber' filters={uniqueEmployerArray} />
+        </>
+      )
+        :
+        null
+    }
     </>
-  )
-}
+  );
+};
 
 export default LeftContent

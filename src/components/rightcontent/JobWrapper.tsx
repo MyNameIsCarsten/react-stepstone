@@ -11,22 +11,23 @@ const JWrapper = styled.div`
 
 const JobWrapper: React.FC = () => {
     const jobs = useSelector((state: RootState) => state.jobs.currentJobs)
+    
 
   return (
-    <JWrapper data-testid='jobWrapper'>
-        {jobs.map((job, index) => 
-        <JobCard 
-            key={index}
-            title={job.title}
-            employer={job.employer}
-            cities={job.cities}
-            homeOffice={job.homeOffice}
-            minSalary={job.minSalary}
-            maxSalary={job.maxSalary}
-            fastApplication={job.fastApplication}
-            date={job.date}
-        />)}
-    </JWrapper>
+      <JWrapper data-testid='jobWrapper'>
+          {jobs.map((job, index) => 
+          <JobCard 
+              key={index}
+              title={job.title}
+              employer={job.employer}
+              cities={job.cities}
+              homeOffice={job.homeOffice}
+              minSalary={job.minSalary}
+              maxSalary={job.maxSalary}
+              fastApplication={job.fastApplication}
+              date={job.date}
+          />)}
+      </JWrapper>
   )
 }
 

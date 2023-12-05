@@ -73,10 +73,13 @@ const LocationSearchWrapper: React.FC<Props> = ({ searchLocation, setSearchLocat
             value={searchLocation}
             onChange={(e) => setSearchLocation(e.target.value)}
             data-testid='searchBarLocation'
+            aria-label="Search for City or Location"
+            aria-labelledby='Search City'
         />
         <SvgButtonWrapper
             onClick={() => setSearchLocation('')}
             data-testid='locationSVGdelete'
+            aria-label="Clear City or Location search term"
         >
             <svg 
                 aria-hidden="true" 

@@ -11,6 +11,9 @@ This project is a clone of the StepStone website, demonstrating proficiency in u
 - **TypeScript**: A superset of JavaScript that adds static typing to the language.
 - **Styled Components**: A library for styling React components using tagged template literals.
 - **Semantic HTML**: Utilizing HTML5 to create a clear and meaningful structure for better accessibility and SEO.
+- **Google Web Vitals**: 
+   - Desktop (via Incognito Browser): Score of 96 (Performance), 94 (Accessibilty), 100 (Best Practices), 100 (SEO)
+   - Mobile (via Incognito Browser): Score of 69 (Performance), 94 (Accessibilty), 100 (Best Practices), 100 (SEO)
 
 ## Features
 

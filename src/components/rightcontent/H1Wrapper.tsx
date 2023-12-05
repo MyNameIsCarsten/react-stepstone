@@ -11,11 +11,15 @@ const H1 = styled.h1`
 `;
 
 const TextHighlight = styled.a`
-  color: rgb(0, 153, 176);
+  color: rgb(194 53 53);
 `;
 
 const LinkWrapper = styled(TextHighlight)`
     cursor: pointer;
+`;
+
+const MessageWrapper = styled(TextHighlight)`
+    color: red;
 `;
 
 const H1Wrapper: React.FC = () => {
@@ -26,18 +30,20 @@ const H1Wrapper: React.FC = () => {
     const searchDistance = useSelector((state: RootState) => state.jobs.app.searchDistance)
 
   return (
-    jobs.length > 0 || searchKeyword !== '' || searchLocation !== '' ? 
+    searchKeyword !== '' || searchLocation !== '' ? 
+      <>
         <H1 data-testid='h1Wrapper'>
-            {jobs.length} Treffer für <LinkWrapper>{searchKeyword}</LinkWrapper> Jobs{' '}
+            {jobs.length} Treffer für <LinkWrapper href='#'>{searchKeyword}</LinkWrapper> Jobs{' '}
             {searchLocation !== '' && (
             <>
                 {'in '}
-                <LinkWrapper>{searchLocation}</LinkWrapper>
+                <LinkWrapper href='#'>{searchLocation}</LinkWrapper>
             </>
-            )} im Umkreis von {searchDistance} km
+            )} im Umkreis von {searchDistance} km {jobs.length === 0 && <MessageWrapper>(Probier es mit React und Berlin)</MessageWrapper>}
         </H1>
+      </>
     : 
-    <H1>Suche nach einem <TextHighlight>Jobtitel, Kompetenz oder Firmenname</TextHighlight> und wähle einen bevorzugten <TextHighlight>Arbeitsort</TextHighlight>.</H1>
+    <H1>Suche nach einem <TextHighlight  href='#'>Jobtitel, Kompetenz oder Firmenname</TextHighlight> und wähle einen bevorzugten <TextHighlight  href='#'>Arbeitsort</TextHighlight>.</H1>
   )
 }
 

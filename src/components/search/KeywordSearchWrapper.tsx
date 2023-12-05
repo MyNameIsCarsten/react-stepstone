@@ -67,11 +67,14 @@ const KeywordSearchWrapper: React.FC<Props> = ({ searchKeyword, setSearchKeyword
             value={searchKeyword}
             onChange={(e) => setSearchKeyword(e.target.value)}
             data-testid='searchBarKeyword'
+            aria-label="Search for Job, Skill or Company"
+            aria-labelledby='Search Keyword'
         />
         <SvgButtonWrapper  
             $round={true}
             onClick={() => setSearchKeyword('')}
             data-testid='keywordSVGdelete'
+            aria-label="Clear Job, Skill or Company search term"
         >
             <svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 20 20" aria-labelledby="RemoveIcon-72"><title id="RemoveIcon-72">Remove icon</title><path fill="currentColor" d="M10 10.938l-4.167 4.166a.61.61 0 01-.448.188.645.645 0 01-.468-.209.645.645 0 01-.209-.468c0-.174.07-.33.209-.469L9.062 10 4.896 5.833a.657.657 0 01.021-.937.647.647 0 01.468-.208c.174 0 .33.07.469.208L10 9.062l4.167-4.166a.657.657 0 01.458-.198c.18-.007.34.06.479.198a.648.648 0 01.208.469c0 .173-.07.33-.208.468L10.938 10l4.166 4.167a.647.647 0 01.198.448.61.61 0 01-.198.468.646.646 0 01-.469.209.645.645 0 01-.468-.209L10 10.938z"></path></svg>
         </SvgButtonWrapper>

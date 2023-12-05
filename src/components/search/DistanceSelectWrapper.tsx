@@ -5,6 +5,8 @@ const SelectWrapper = styled.select`
     border: none;
     background-color: transparent;
     color: #0C2577;
+    top: -24px;
+    position: relative;
     &:focus-visible {
         outline: none;
     }
@@ -15,6 +17,10 @@ const SelectWrapper = styled.select`
 
 const OptionWrapper = styled.option`
     cursor: pointer;
+`;
+
+const Label = styled.label`
+    visibility: hidden;
 `;
 
 interface Props {
@@ -30,12 +36,14 @@ const DistanceSelectWrapper: React.FC<Props> = ({ searchDistance, setSearchDista
 
   return (
     <form data-testid='distanceSelectWrapper'>
+        <Label htmlFor="distance">Select a Distance</Label>
         <SelectWrapper 
             name="distance" 
             id="distance" 
             onChange={handleDistanceChange} 
             value={searchDistance}
             data-testid='selectWrapper'
+            aria-labelledby='Select a Distance'
             >
             <OptionWrapper value="5">5 km</OptionWrapper>
             <OptionWrapper value="10">10 km</OptionWrapper>

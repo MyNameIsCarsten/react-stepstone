@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { lazy, Suspense  } from 'react'
 import styled from 'styled-components'
 import H1Wrapper from './H1Wrapper';
-import JobWrapper from './JobWrapper';
-import SortWrapper from './SortWrapper';
+
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
+
+const JobWrapper = lazy( () =>  import ('./JobWrapper'));
+const SortWrapper = lazy( () =>  import ('./SortWrapper'));
 
 const RightContentWrapper = styled.div`
     display: flex;
@@ -11,14 +15,22 @@ const RightContentWrapper = styled.div`
 `;
 
 const RightContent: React.FC  = () => {
+
+  const searchKeyword = useSelector((state: RootState) => state.jobs.app.searchKeyword)
+  const searchLocation = useSelector((state: RootState) => state.jobs.app.searchLocation)
+
   
   return (
     <>
-      <RightContentWrapper>
-        <H1Wrapper />
-        <SortWrapper />
-      </RightContentWrapper>
-      <JobWrapper />
+      <Suspense fallback={<div>Loading...</div>}>
+        <RightContentWrapper>
+          <H1Wrapper />
+          {searchKeyword !== '' || searchLocation !== '' ? <SortWrapper /> : null}
+        </RightContentWrapper>
+        <Suspense fallback={<div>Loading...</div>}>
+          {searchKeyword !== '' || searchLocation !== '' ? <JobWrapper /> : null}
+        </Suspense>
+      </Suspense>
     </>
   )
 }
