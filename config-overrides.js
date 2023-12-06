@@ -11,7 +11,7 @@ module.exports = function override(config) {
       plugin.options = {
         ...plugin.options,
         minify: {
-          ...plugin.options.minify,
+          ...plugin.options.minify || {},
           removeComments: true,
           collapseWhitespace: true,
           removeRedundantAttributes: true,
