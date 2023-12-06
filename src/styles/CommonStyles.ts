@@ -29,6 +29,7 @@ export const SearchBar = styled.input`
     line-height: 24px;
     min-height: 24px;
     border: none;
+    color: #0C2577;
     &:focus {
         outline: none; 
         border: transparent;

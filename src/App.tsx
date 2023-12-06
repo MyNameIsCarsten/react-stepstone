@@ -24,6 +24,7 @@ const ContentWrapper = styled.div`
   gap: 2em;
   @media (max-width: 900px){
     flex-direction: column;
+    gap: 1em;
   }
 `;
 

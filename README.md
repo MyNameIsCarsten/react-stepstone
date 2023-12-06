@@ -4,6 +4,10 @@
 
 This project is a clone of the StepStone website, demonstrating proficiency in using TypeScript, Styled Components, React, Redux, and Semantic HTML. It serves as a showcase of web development skills and the ability to recreate a complex web application.
 
+https://stepstoneclone.netlify.app/
+
+![Jobs Overview](./Jobsoverview.png)
+
 ## Technologies Used
 
 - **React**: A JavaScript library for building user interfaces.
@@ -54,6 +58,19 @@ This project is a clone of the StepStone website, demonstrating proficiency in u
 - **src/store**: Houses Redux-related files, such as actions, reducers, and the store configuration.
 - **src/styles**: Holds global styles, themes, or any other styling-related files.
 - **public**: Contains static assets and the HTML template.
+
+## Images
+### Starting Page
+![Starting Page](./Startingpage.png)
+### Jobs Overview
+![Jobs Overview](./Jobsoverview.png)
+### Jobs filtered and liked
+![Jobs filtered and liked](./Jobsfilteredandliked.png)
+### Mobile View
+![Mobiel Top View](./Mobiletop.png)
+![Mobiel Middle View](./Mobilemiddle.png)
+![Mobiel Job View](./Mobilejob.png)
+
 
 ## Contributing
 

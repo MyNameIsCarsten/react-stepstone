@@ -6,7 +6,7 @@ import { SearchBar, SearchBarWrapper } from '../../styles/CommonStyles';
 
 const StyledSvg = styled.svg`
     max-width: 2em;
-    max-height: 2em;
+    height: 2em;
     background: white;
     padding-top: 4px;
     padding-bottom: 4px;
