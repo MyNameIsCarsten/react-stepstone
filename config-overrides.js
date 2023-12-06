@@ -8,22 +8,24 @@ module.exports = function override(config) {
   // Set cache headers for static assets
   config.plugins.forEach((plugin) => {
     if (plugin.constructor.name === 'HtmlWebpackPlugin') {
-      plugin.options = {
-        ...plugin.options,
-        minify: {
-          ...plugin.options.minify || {},
-          removeComments: true,
-          collapseWhitespace: true,
-          removeRedundantAttributes: true,
-          useShortDoctype: true,
-          removeEmptyAttributes: true,
-          removeStyleLinkTypeAttributes: true,
-          keepClosingSlash: true,
-          minifyJS: true,
-          minifyCSS: true,
-          minifyURLs: true,
-        },
-      };
+      if (plugin.options && plugin.options.minify) {
+        plugin.options = {
+          ...plugin.options,
+          minify: {
+            ...plugin.options.minify,
+            removeComments: true,
+            collapseWhitespace: true,
+            removeRedundantAttributes: true,
+            useShortDoctype: true,
+            removeEmptyAttributes: true,
+            removeStyleLinkTypeAttributes: true,
+            keepClosingSlash: true,
+            minifyJS: true,
+            minifyCSS: true,
+            minifyURLs: true,
+          },
+        };
+      }
     }
   });
 
